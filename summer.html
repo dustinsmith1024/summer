@@ -1,0 +1,102 @@
+<head>
+  <title>Summer Burndown</title>
+</head>
+
+<body>
+  {{> header}}
+  {{> graph}}
+  {{> new_goal}}
+  {{> goal_list}}
+  {{> line_graph }}
+
+</body>
+
+<template name="line_graph">
+	<div id="line-graph">
+	</div>
+</template>
+
+<template name="goal_list">
+	<h2>Goals</h2>
+	<section class="">
+	<table class="table table-striped goal-list">
+		<tbody>
+	{{#each goals}}
+		{{> goal }}
+	{{/each}}
+	</tbody>
+	</table>
+	</section>
+</template>
+
+<template name="progress_list">
+	{{#each progress}}
+		<tr>{{> progress_row }}</tr>
+	{{/each}}
+</template>
+
+<template name="progress_row">
+	<td> &nbsp;&nbsp;&nbsp; <span class="2badge 2badge-info">{{ percent }}</span></td>
+	<td>{{ amount }} on {{ date }}</td>
+	<td><i class="remove icon-remove"></i></td>
+</template>
+
+<template name="goal">
+	<tr class="goal {{#if selected }}shut{{else}}open{{/if}}">
+		<td>
+			<span class="badge badge-{{ percent_class }}">{{ percent }}</span></td>
+		<td>I will {{ action }} {{amount }} {{ noun }}.</td>
+		<td>
+		{{#if selected }}
+			<i class="shut icon-minus-sign"></i>
+		{{else }}
+			<i class="open icon-plus-sign"></i>
+		{{/if }}
+		</td>
+	</tr>
+	{{#if selected }}
+	<tr>{{> chart }}</tr>
+	{{> progress_list}}
+	{{> new_progress }}
+	{{/if}}
+</template>
+
+<template name="chart">
+	<td class="burn-{{ _id }}" colspan="3"></td>
+</template>
+<template name="new_goal">
+  <h2>This summer ...</h2>
+  <form class="well">I will 
+    <input value="" name="action" placeholder="Action" /> 
+    <input value="" name="amount" placeholder="1000" />
+    <input value="" name="noun" placeholder="Noun" />
+    this summer.<input type="hidden" value='new' name="complete"/>
+    <input class="add btn btn-success" type="submit" value="Add" />
+  </form>
+</template>
+
+<template name="new_progress">
+	<tr><td colspan="3" class="progress">
+		<form>I {{ action }}  
+	    	<input class="num" name="amount" placeholder="1000" />
+	    	{{ noun }} on
+	    	<input class="date" value="2012-01-03" name="date"/>.
+	    	<input class="add btn btn-success" type="submit" value="Add" />
+	  	</form>
+ 	</td></tr>
+</template>
+
+
+<template name="graph">
+<div id="graph">
+  <h2>Graphsies</h2>
+  <input name="but" type="button" value="Click" />
+</div>
+</template>
+
+<template name="header">
+  <div>
+    <h1>My Summer Burndown</h1>
+    <p>Track your goals for this summer.</p>
+  </div>
+</template>

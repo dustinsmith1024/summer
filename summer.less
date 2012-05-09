@@ -1,0 +1,72 @@
+/* CSS declarations go here */
+body {
+	text-align: center;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area {
+  fill: lightsteelblue;
+  fill: url(#gradient);
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.dot {
+  fill: white;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+
+.goal-list {
+	margin:auto;
+	max-width: 400px;
+}
+tr.goal {
+	&:hover { cursor: pointer;}
+}
+td.progress {
+	padding-top: 5px;
+	text-align: center;
+	form {
+		margin: 10px 0;
+		input { margin: 0;}
+	}
+	.num {
+		width: 40px;
+	}
+	.date {
+		width: 75px;
+	}
+}
+/* graphs */
+.chart rect {
+  stroke: white;
+  fill: steelBlue;
+}
+.chart .bar {
+  fill: white;
+}
+.chart div {
+     font: 10px sans-serif;
+     background-color: steelblue;
+     text-align: right;
+     padding: 3px;
+     margin: 1px;
+     color: white;
+}
+ul.goal {
+}
+ul.inline li {
+	display: inline;
+	
+}
